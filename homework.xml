@@ -1,0 +1,47 @@
+<human-body>
+	<skin>
+	<bone>
+		<blood>
+			<tendon>
+		</blood>
+	</bone>
+	<nervous-system>
+		<small-intestine>
+			<cilium>
+				<villi>
+					<mucosa>
+						<lacteal>
+							<lymphoid-nodule>
+								<subcosa>
+									<submucosal-artery-and-vein>
+								</subcosa>
+							</lymphoid-nodule>
+						</lacteal>
+					</mucosa>
+				</villi>
+			</cilium>
+		</small-intestine>
+	</nervous-system>
+	<ribs>
+		<intercostal-muscles>
+			<lungs>
+				<trachea>
+				<bronchus>
+					<bronchioles>
+						<artery-and-veins>
+							<alveoli>
+								<air-sac>
+									<oxygen-and-carbon-dioxide>
+								</air-sac>
+							</alveoli>
+						</artery-and-veins>
+					</bronchioles>
+				</bronchus>
+				</trachea>
+			</lungs>
+		</ntercostal-muscles>
+	</ribs>
+</human-body>
+
+
+
