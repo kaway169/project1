@@ -1,8 +1,3 @@
-Last login: Tue Sep 25 19:07:26 on ttys000
-yuris-mbp:~ yurikawada$ 
-yuris-mbp:~ yurikawada$ pwd
-/Users/yurikawada
-yuris-mbp:~ yurikawada$ 
 # terminal tips
 
 ## commands
@@ -12,7 +7,7 @@ yuris-mbp:~ yurikawada$
 - cd change directory
 - cd .. goes up a folder
 
-##tips
+## tips
 
 - tab to autocomplete a half typed word
 - type "cd" drag a folder into terminal
@@ -26,3 +21,4 @@ yuris-mbp:~ yurikawada$
 to upload to github
 
 - git commit -am "some message"
+- git push origin master
