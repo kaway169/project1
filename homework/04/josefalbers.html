@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style>
+body{
+	background-color: black
+}
+div{
+	position: absolute;
+}
+@keyframes mymove{
+	from {background-color: yellow; }
+    to {background:#3399FF; }
+    from {left: 0%;}
+    to {left: 35%;}
+}
+@keyframes mymove-second{
+	0% {transform: scale(2) }
+		from {background-color: purple; }
+    	to {background:#ED5233; }
+    	from {top: -80%;}
+    	to {top: 5%;}
+	20% {transform: scale(1.6) }
+	100% {transform: scale(1) }
+}
+@keyframes mymove-third{
+	from {background-color: orange; }
+    to {background:#8EEC88; }
+    from {top: 100%;}
+    to {top: 0%;}
+}
+@keyframes shrinking-cog {
+	0% {transform: scale(2) }
+	20% {transform: scale(2.2) }
+	100% {transform: scale(1) }
+}
+#first-div{
+	animation: mymove-third 5s infinite;
+	background-color: #8EEC88;
+	width:95vmin;
+	height:100vmin;
+	top:0%;
+	left:45%;
+	margin-left: -40vmin;
+	margin-right: -5vmin;
+}
+#second-div{
+	animation: mymove-second 5s infinite;
+	background-color: #ED5233;
+	width:40vmin;
+	height:90vmin;
+	top:5%;
+	left:63%;
+	margin-left: -40vmin;
+	margin-right: -5vmin;
+}
+#third-div{
+	animation: mymove 5s infinite;
+	background-color:#3399FF;
+	width:40vmin;
+	height:15vmin;
+	top:15%;
+	left:35%;
+	margin-left: -5vmin;
+	margin-right: -5vmin;
+	opacity: 0.8;
+}
+#fourth-div{
+	animation: shrinking-cog 5s infinite;
+	background-color:#3399FF;
+	width:40vmin;
+	height:15vmin;
+	top:43%;
+	left:35%;
+	margin-left: -5vmin;
+	margin-right: -5vmin;
+	opacity: 0.8;
+}
+#fifth-div{
+	animation: mymove 5s infinite;
+	background-color:#3399FF;
+	width:40vmin;
+	height:15vmin;
+	top:72%;
+	left:35%;
+	margin-left: -5vmin;
+	margin-right: -5vmin;
+	opacity: 0.8;
+}
+</style>
+</head>
+<body>
+	<div id="first-div"></div>
+	<div id="second-div"></div>
+	<div id="third-div"></div>
+	<div id="fourth-div"></div>
+	<div id="fifth-div"></div>
+</body>
+</html>

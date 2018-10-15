@@ -1,0 +1,52 @@
+ <!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style>
+
+html,body{
+	margin:10;
+	height:100%;
+	display:flex;
+	align-items: center;
+	justify-content: center;
+}
+
+@keyframes twirl{
+	50%{
+		transform: rotate(180deg);
+	}
+	100%{
+		transform: initial;
+	}
+}
+@keyframes stomp{
+	50%{ transform: translate(0, 300px); }
+	100%{ transform: initial; }
+}
+#square{
+	animation: twirl 2s infinite;
+	background-color: green;
+	width:50vmin;
+	height:50vmin;
+}
+#another{
+	animation: twirl 10s infinite;
+}
+#outer{
+	animation: stomp 1s infinite;
+}
+</style>
+</head>
+<body>
+
+<h1 id="another">Yuri</h1>
+
+<div id="outer">
+	<div id="square"></div>
+</div>
+
+
+
+</body>
+</html>
