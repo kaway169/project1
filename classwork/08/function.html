@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<script>
+
+function randomInt(){
+	var number = Math.random() * 255;
+	var integer = parseInt(number);
+	return integer;
+}
+
+var result = randomInt();
+
+console.log(result);
+
+var color = "rgb(" + randomInt() + 
+				"," + randomInt() +
+				"," + randomInt() + ")";
+
+document.body.style.backgroundColor = color;
+
+</script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style>
+svg{
+	width:100vmin;
+	height:100vmin;
+}
+#letter-path{
+	stroke-dasharray: 3000px;
+	fill:white;
+	stroke:black;
+	stroke-width: 10px;
+	animation: ants 2s linear forwards;
+	stroke-dashoffset:3000px;
+}
+@keyframes ants{
+	100%{
+		stroke-dashoffset:0;
+	}
+}
+</style>
+</head>
+<body>
+
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 500 500" enable-background="new 0 0 500 500" xml:space="preserve">
+<g>
+	<path id="letter-path" d="M212.3,489.9V289.7L63.2,18.1h69.3L199,148.3c18.2,35.7,32.2,64.4,46.9,97.3h1.4c13.3-30.8,29.4-61.6,47.6-97.3l67.9-130.2
+		h69.3L273.9,289v200.9H212.3z"/>
+</g>
+</svg>
+
+</body>
+</html>

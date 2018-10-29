@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Coin Flip</title>
+<style>
+html, body{
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+}
+h1{
+	font-size: 20vmin;
+}
+</style>
+</head>
+<body>
+	<h1 id="coin"></h1>
+<script>
+
+var choices = ["heads", "tails"];
+
+var number = Math.random() * 2;
+var integer = parseInt(number);
+
+document.getElementById("coin").innerHTML = choices[integer];
+
+</script>
+</body>
+</html>
