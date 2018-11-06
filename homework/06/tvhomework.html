@@ -3,6 +3,7 @@
 	<title>TV Channels</title>
 </head>
 <style>
+
 html,body{
 	margin: 0;
 }
@@ -12,35 +13,32 @@ img{
 }
 </style>
 <body>
-
 	<img src="gifs/glitch.gif" id="gifs">
-
 </body>
 <script>
 
 var myGifs = document.getElementById("gifs");
 var gifs = ["gifs/glitch.gif", "gifs/jimmy.gif", "gifs/kuwtk.gif", "gifs/news.gif", "gifs/bella.gif"];
-var first = 1;
+var a = 1;
 
 function change(){
-document.getElementById("gifs").src = gifs[first];
-first ++; 
+document.getElementById("gifs").src = gifs[a];
+a ++; 
 
-if(first >= 5){
-	first = 1; 
+if(a >= 5){
+	a = 1; 
 }
-if(first < 1){
-	first = 5;
+if(a < 1){
+	a = 5;
 }
 }
 
 function checkKey(){
-	e = e || window.event;
 	if(e.keyCode === 1){
-		first++;
+		a++;
 	}
 	if(e.keyCode === 5){
-		first--;  
+		a--;  
 	}
 }
 
