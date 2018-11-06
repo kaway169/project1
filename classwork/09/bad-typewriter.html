@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style type="text/css">
+	
+h1{
+	position: absolute;
+	font-family: monospace;
+	
+}
+</style>
+</head>
+<body>
+<script>
+
+function randomInt(input){
+
+	var rand = Math.random() * input;
+	rand = parseInt (rand)
+	return rand;
+}
+
+
+function type(event){
+	console.log(event.key);
+
+	var myH1 = document.createElement("h1");
+	myH1.innerHTML = event.key;
+	//myH1.style.top = randomInt(500) + "%";
+	//myH1.style.left = randomInt(500) + "%";
+	myH1.style.top = randomInt(window.innerHeight) + "px";
+	myH1.style.left = randomInt(window.innerWidth) + "px";
+	document.body.appendChild(myH1);
+}
+
+	document.onkeypress = type;
+
+
+</script>
+
+</body>
+</html>

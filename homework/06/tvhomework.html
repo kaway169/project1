@@ -1,0 +1,49 @@
+<html>
+<head>
+	<title>TV Channels</title>
+</head>
+<style>
+html,body{
+	margin: 0;
+}
+img{
+	width: 100%;
+	height: 100%;
+}
+</style>
+<body>
+
+	<img src="gifs/glitch.gif" id="gifs">
+
+</body>
+<script>
+var myGifs = document.getElementById("gifs");
+var gifs = ["gifs/glitch.gif", "gifs/jimmy.gif", "gifs/kuwtk.gif", "gifs/news.gif", "gifs/bella.gif"];
+var first = 1;
+
+function change(){
+document.getElementById("gifs").src = gifs[first];
+first ++; 
+
+if(first >= 5){
+	first = 1; 
+}
+if(first < 1){
+	first = 5;
+}
+}
+
+function checkKey(e){
+	e = e || window.event;
+	if(e.keyCode === 1){
+		first++;
+	}
+	if(e.keyCode === 5){
+		first--;  
+	}
+}
+
+document.onkeydown = checkKey;
+document.onkeydown = change;
+</script>
+</html>

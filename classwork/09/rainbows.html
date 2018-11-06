@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<style>
+div{
+	width:100px;
+	height:100px;
+	border-radius: 50px;
+	background-color: black;
+	position: absolute;
+	margin-top: -50px;
+	margin-left: -50px;
+}
+</style>
+</head>
+<body>
+<script>
+var color = 0
+function draw(event){
+	console.log(event);
+	var c = document.createElement("div");
+	c.style.top = event.clientY + "px";
+	c.style.left = event.clientX + "px";
+	c.style.backgroundColor = "hsl(" + color +", 100%, 50%)";
+	document.body.appendChild(c)
+	color = color + 1
+}
+
+document.onmousemove = draw;
+
+
+</script>
+</body>
+</html>
