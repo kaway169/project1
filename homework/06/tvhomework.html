@@ -17,6 +17,7 @@ img{
 
 </body>
 <script>
+
 var myGifs = document.getElementById("gifs");
 var gifs = ["gifs/glitch.gif", "gifs/jimmy.gif", "gifs/kuwtk.gif", "gifs/news.gif", "gifs/bella.gif"];
 var first = 1;
@@ -33,7 +34,7 @@ if(first < 1){
 }
 }
 
-function checkKey(e){
+function checkKey(){
 	e = e || window.event;
 	if(e.keyCode === 1){
 		first++;
@@ -43,7 +44,7 @@ function checkKey(e){
 	}
 }
 
-document.onkeydown = checkKey;
-document.onkeydown = change;
+document.onkeyup = checkKey;
+document.onkeyup = change;
 </script>
 </html>
