@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<input type="file" id = "open-file">
+
+<script>
+
+var reader = new FileReader ();
+
+document.getElementById ("open-file").onchange = function(){
+	reader.readAsText(this.files[0])
+}
+
+reader.onload = function(event){
+	document.body.innerHTML = event.target.result;
+	// someFunction(event.target.result);
+}
+
+  
+
+</script>
+
+</body>
+</html>

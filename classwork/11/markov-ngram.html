@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<title></title>
+<body>
+<input type="file" id="open-file">
+<h1 id="poem"></h1>
+<script>
+
+// load a file
+var reader = new FileReader();
+document.getElementById("open-file").onchange = function(){
+	reader.readAsText(this.files[0]);
+}
+reader.onload = function(event){
+	buildDictionary(event.target.result);
+	markov();
+}
+// now the file has been loaded
+
+
+var ngramLength = 3;
+var poemSize = 100;
+
+
+var dictionary = {};
+function buildDictionary(text){
+	// build the ngram dictionary
+	var i = 0;
+	while(i < text.length - ngramLength){
+		// step through the string, save each ngram and the ngram that follows
+		var ngram = text.substring(i, i+ngramLength);
+		var ngramNext = text.substring(i+ngramLength, i+ngramLength*2);
+		// if we're seeing this letter for the first time, create an empty array
+		if(dictionary[ngram] == undefined){ 
+			dictionary[ngram] = [];
+		}
+		// add the ngram into the dictionary
+		dictionary[ngram].push(ngramNext);
+		i = i + ngramLength;
+	}
+}
+
+function randomInt(max){
+	return parseInt(Math.random() * max);
+}
+
+function markov(){
+	var keys = Object.keys(dictionary);
+	var firstNGram = keys[ randomInt(keys.length) ];
+
+	var ngrams = [firstNGram];
+
+	var counter = 0;
+	while(counter < poemSize){
+		// grab the last ngram in the grams array
+		var prevGram = ngrams[counter];
+		// get this ngram's array of next possible ngrams
+		var nextArray = dictionary[prevGram];
+		// pick a random ngram from the next possible ngrams
+		var nextGram = nextArray[ randomInt(nextArray.length) ];
+		ngrams.push(nextGram);
+		counter = counter + 1;
+	}
+
+	var poem = ngrams.join("");
+	document.getElementById("poem").innerHTML = poem;
+}
+</script>
+</body>
+</html>

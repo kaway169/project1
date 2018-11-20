@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style>
+body{
+	margin:0;
+}
+div{
+	background-color:black;
+	width: 50px;
+	height:50px;
+	position: absolute;
+	border-radius: 50%;
+}
+
+</style>
+<body>
+	<div id="ball"></div>
+</body>
+<script>
+
+var x = 0;
+var y = 0;
+var xChange = 1;
+var yChange = 1;
+
+function gameLoop(){
+	//console.log("hello");
+	//console.log("class");
+	x = x + xChange;
+	y = y + yChange;
+	document.getElementById("ball").style.top = y + "px";
+	document.getElementById("ball").style.left = x + "px";
+	if(x > 200){
+		xChange = -1;
+	}
+	if(y > 250){
+		yChange = -1;
+	}
+	if(x < 0){
+		xChange = 1;
+	}
+	if(y < 0){
+		yChange = 1;
+	}
+}
+//here is how you run a function
+//gameLoop();
+
+//here is how you fun a gunction on a loop infinite times
+setInterval(gameLoop, 1000/60);
+//e.g. 3000 is 3 seconds
+
+//how to make a function on an infinite loop
+
+</script>
+</html>
