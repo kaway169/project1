@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<input type="file" id = "open-file">
+<h1 id= "poem"></h1>
+<style>
+h1{
+	position:absolute;
+	top:60%;
+	left:50%;
+	width:70vmin;
+	height: 70vmin;
+	font-size: 16pt;
+	font-style: initial;
+	font-family: futura, sans-serif;
+	font-weight: normal;
+	margin-top: -35vmin;
+	margin-left: -35vmin;
+}
+</style>
+
+<script>
+
+var reader = new FileReader ();
+
+document.getElementById ("open-file").onchange = function(){
+	reader.readAsText(this.files[0])
+}
+
+reader.onload = function(event){
+	buildDictionary(event.target.result);
+	markov();
+}
+
+var dictionary = {};
+function buildDictionary(text){
+	//console.log(text);
+	var words = text.split(/\s+/);
+	//console.log(words);
+	//loop over every word, put in the dictionary
+
+
+	var i = 0;
+	while(i < words.length-1){
+		//get the word from word array
+		var thisword = words[i];
+		var nextword = words[i+1];
+		//get the first letter from this word
+		//var firstletter = thisword[0];
+		//if we're seeing this letter for the first time, create an emty array
+		if(dictionary[thisword] == undefined){
+			dictionary[thisword] = [];
+		}
+
+		//add the word into the dictionary, at the first letter's spot, add to the array
+		dictionary[thisword].push(nextword);
+
+		i = i + 1;
+
+	}
+	console.log(dictionary);
+}
+
+function randomInt(max) {
+	return parseInt(Math.random() * max);
+}
+
+function markov (){
+	var keys = Object.keys(dictionary);
+	var firstword = keys [randomInt(keys.length)];
+
+	var phrase = [firstword];
+
+	// //loop start
+	var counter = 0;
+	while(counter < 150){
+		var thisword = phrase[phrase.length - 1];
+		var nextwordarray = dictionary[thisword];
+		var nextword = nextwordarray[randomInt(nextwordarray.length)];
+		phrase.push(nextword);
+		counter = counter + 1;
+	}
+	// console.log(phrase);
+
+	// //loop end
+	var poem = phrase.join(" ");
+	document.getElementById("poem").innerHTML = poem
+
+}
+
+
+</script>
+
+</body>
+</html>
