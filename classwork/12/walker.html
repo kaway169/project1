@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<style>
+body{margin:0;}
+</style>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<script>
+
+var canvas = document.getElementById("canvas");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+var context = canvas.getContext("2d");
+
+context.moveTo(window.innerWidth/2, window.innerHeight/2);
+//context.lineTo(100,100);
+//context.stroke();
+context.moveTo(x, y);
+
+var x = window.innerWidth/2;
+var y = window. innerHeight/2;
+
+function loop(){
+	x = x + (Math.random() - 0.5) * 20;
+	y = y + (Math.random() - 0.5) * 20;
+	context.lineTo(x,y);
+	context.stroke();
+}
+
+setInterval(loop, 1000/60)
+//every 12 millisecond run a new frame
+</script>
+</body>
+</html>

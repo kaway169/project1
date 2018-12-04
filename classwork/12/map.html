@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<style>
+body{margin:0;}
+img{
+	width:1200px;
+	height:600px;
+}
+div{
+	width: 10px;
+	height: 10px;
+	margin-left: -5px;
+	margin-top: -5px;
+	border-radius: 5px;
+	background-color: red;
+	position: absolute;
+
+}
+</style>
+<body>
+
+<img src="map.svg">
+
+<script>
+var url ="https://raw.githubusercontent.com/robbykraft/CreativeComputing/master/people.json";
+
+fetch(url)
+	.then(response => response.json())
+	.then(data => drawPins(data))
+
+function drawPins(people){
+	//var pin = document.createElement("div");
+	//pin.style.top = "100px";
+	//pin.style.left = "100px";
+	//document.body.appendChild(pin);
+
+	var i = 0;
+	while (i < people.length){
+		console.log(people[i].name)
+
+		var pin = document.createElement("div");
+		var x = (people[i].lon + 180) / 360 * 1200;
+		var y = (1-(people[i].lat + 90) / 180) * 600;
+		pin.style.top = y + "px";
+		pin.style.left = x + "px";
+		pin.style.backgroundColor = people[i].color;
+		document.body.appendChild(pin);
+
+		i = i + 1;
+	}
+}
+
+</script>
+
+</body>
+</html>
