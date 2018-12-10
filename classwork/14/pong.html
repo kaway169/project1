@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+	<title></title>
+<style>
+body{
+	margin: 0;
+	background-color: black;
+}
+#ball{
+	width: 20px;
+	height: 20px;
+	background-color: white;
+	border-radius: 10px;
+	margin: -10px 0px 0px -10px;
+	position: absolute;
+}
+#player-1, #player-2{
+	width: 10px;
+	height: 60px;
+	background-color: white;
+	position: absolute;
+	margin-top: -30px;
+}
+#player-1{
+	margin-left: -10px;
+}
+#player-1-points, #player-2-points{
+	position: absolute;
+	color: white;
+	font-size: 100px;
+	margin: 0;
+	font-family: monospace;
+}
+#player-1-points{
+	top: 20px;
+	left: 100px;	
+}
+#player-2-points{
+	top: 20px;
+	left: calc(100vw - 150px);	
+}
+
+</style>
+</head>
+<body data-gr-c-s-loaded="true">
+	<div id="ball" style="top: 138px; left: 960px;"></div>
+	<div id="player-1" style="top: 358px; left: 20px;"></div>
+	<div id="player-2"></div>
+	<p id="player-1-points">0</p>
+	<p id="player-2-points">2</p>
+
+<script>
+var ballRadius = 10;
+var speed = 3;
+var x = window.innerWidth / 2;
+var y = 0;
+var velocityX = speed;
+var velocityY = speed;
+var paddleY = window.innerHeight / 2;
+var paddleSpeed = 30;
+var player2Points = 0;
+var player1Points = 0;
+
+setInterval(loop, 16);
+
+function loop(){
+	x = x + velocityX;
+	y = y + velocityY;
+
+	if (x > window.innerWidth - ballRadius - 20){
+		winCondition(2);
+		velocityX = -speed;
+	}
+	if (y > window.innerHeight - ballRadius){
+		velocityY = -speed;
+	}
+	if(x < ballRadius + 20){
+		if(winCondition(1)){
+			player2Points = player2Points + 1;
+			document.getElementById("player-2-points").innerHTML = player2Points;
+			x = window.innerWidth / 2;
+		}
+		velocityX = speed;
+	}
+	if(y < ballRadius){
+		velocityY = speed;
+	}
+
+	document.getElementById("ball").style.top = y + "px";
+	document.getElementById("ball").style.left = x + "px";
+}
+
+document.onmousemove = function(event){
+	console.log(event);
+	document.getElementById("player-1").style.top = event.clientY + "px";
+	document.getElementById("player-1").style.left = "20px";
+}
+
+document.onkeydown = function(event){
+	console.log(event);
+	if(event.keyCode == 38){
+		// arrow up
+		paddleY = paddleY - paddleSpeed;
+	}
+	if(event.keyCode == 40){
+		// arrow down
+		paddleY = paddleY + 5;
+	}
+	document.getElementById("player-2").style.top = paddleY + "px";
+	document.getElementById("player-2").style.left = window.innerWidth - 20 + "px";
+
+}
+
+function winCondition(player){
+	if(player == 1){
+		var paddleString = document.getElementById("player-1").style.top;
+		var paddleInt = parseInt(paddleString);
+		if(Math.abs(paddleInt - y) < 50){
+			return false;
+		} else{
+			return true;
+		}
+
+	}
+	if(player == 2){
+		
+	}
+}
+
+</script>
+
+</body></html>

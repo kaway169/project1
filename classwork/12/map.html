@@ -25,7 +25,7 @@ div{
 <img src="map.svg">
 
 <script>
-var url ="https://raw.githubusercontent.com/robbykraft/CreativeComputing/master/people.json";
+var url ="https://raw.githubusercontent.com/robbykraft/CreativeComputing/master/people2.json";
 
 fetch(url)
 	.then(response => response.json())
@@ -42,6 +42,7 @@ function drawPins(people){
 		console.log(people[i].name)
 
 		var pin = document.createElement("div");
+		pin.setAttribute("title", people[i].name);
 		var x = (people[i].lon + 180) / 360 * 1200;
 		var y = (1-(people[i].lat + 90) / 180) * 600;
 		pin.style.top = y + "px";
