@@ -8,7 +8,10 @@ html,body{
 	height: 100%;
 	margin: 0;
 	font-family: "Courier New";
-	background-color: #ffffcc;
+	background-color: lightblue;
+}
+@keyframes orbit{
+	100%{ transform: rotatez(360deg); }
 }
 #circle{
 	position: absolute;
@@ -17,8 +20,99 @@ html,body{
 	width: 66vmin;
 	height: 66vmin;
 	margin: -33vmin 0 0 -33vmin;
-	background-color: #ffcc99;
+	background-color: yellow;
 	border-radius: 33vmin;
+}
+#ball1{
+	background-color: pink;
+	width: 8vmin;
+	height: 8vmin;
+	border-radius: 33vmin;
+	position: relative;
+	top:30%;
+	left:10%;
+	margin-top: 10vmin;
+	/*margin-left: -4vmin;*/
+	animation: orbit 13s linear infinite;
+	margin-left: 50vmin;
+	transform-origin: 35vmin;
+}
+#ball2{
+	background-color: orange;
+	width: 10vmin;
+	height: 10vmin;
+	border-radius: 30vmin;
+	position: relative;
+	top:30%;
+	left:0%;
+	margin-top: 10vmin;
+	/*margin-left: -4vmin;*/
+	animation: orbit 10s linear infinite;
+	margin-left: 40vmin;
+	transform-origin: 35vmin;
+}
+#ball3{
+	background-color: purple;
+	width: 10vmin;
+	height: 10vmin;
+	border-radius: 30vmin;
+	position: relative;
+	top:30%;
+	left:10%;
+	margin-top: 0vmin;
+	/*margin-left: -4vmin;*/
+	animation: orbit 8s linear infinite;
+	margin-left: 0vmin;
+	transform-origin: 35vmin;
+}
+#ball4{
+	background-color: grey;
+	width: 5vmin;
+	height: 5vmin;
+	border-radius: 30vmin;
+	position: relative;
+	top:30%;
+	left:0%;
+	margin-top: -50vmin;
+	/*margin-left: -4vmin;*/
+	animation: orbit 10s linear infinite;
+	margin-left: 100vmin;
+	transform-origin: 35vmin;
+}
+#ball5{
+	background-color: #FF7F50;
+	width: 8vmin;
+	height:8vmin;
+	position: absolute;
+	border-radius: 30vmin;
+}
+#ball6{
+	background-color: red;
+	width: 9vmin;
+	height: 9vmin;
+	border-radius: 30vmin;
+	position: relative;
+	top:30%;
+	left:0%;
+	margin-top: -10vmin;
+	/*margin-left: -4vmin;*/
+	animation: orbit 16s linear infinite;
+	margin-left: 90vmin;
+	transform-origin: 30vmin;
+}
+#ball7{
+	background-color: #F05A87;
+	width: 6vmin;
+	height: 6vmin;
+	border-radius: 30vmin;
+	position: relative;
+	top:30%;
+	left:0%;
+	margin-top: 10vmin;
+	/*margin-left: -4vmin;*/
+	animation: orbit 20s linear infinite;
+	margin-left: 10vmin;
+	transform-origin: 40vmin;
 }
 #text-container{
 	position: absolute;
@@ -41,20 +135,20 @@ a:active{
 	color: white;
 }
 .logo{
-    display: flex;
+    display: absolute;
     width: 10vmin;
     height: 10vmin;
-    margin-top: 0px;
-    margin-left: 0px;
+    margin-top: -15vmin;
+    margin-left: 0vmin;
     background-size: auto 10vmin;
     background-image: url(images/ylogo.png);
     background-repeat: no-repeat;
 }
 .animalhaven{
-    display: flex;
+    display: absolute;
     width: 10vmin;
     height: 10vmin;
-    margin-top: 2vmin;
+    margin-top: -10vmin;
     margin-left: 1vmin;
     background-size: auto 8vmin;
     background-image: url(images/armani.png);
@@ -65,7 +159,13 @@ a:active{
 <body>
 
 	<div id="circle"></div>
-
+	<div id="ball1"></div>
+	<div id="ball2"></div>
+	<div id="ball3"></div>
+	<div id="ball4"></div>
+	<div id="ball5"></div>
+	<div id="ball6"></div>
+	<div id="ball7"></div>
 	<div id="text-container">
 		<h2>Creative Computing</h1>
   		<p>Yuri Kawada</p>
@@ -83,4 +183,36 @@ a:active{
 		</div></a>
         </nav>
 </body>
+<script>
+var x = 0;
+var y = 0;
+var speed = 8;
+var width = 45;
+var height = 50;
+var xChange = speed;
+var yChange = speed;
+
+function gameLoop(){
+
+	x = x + xChange;
+	y = y + yChange;
+	document.getElementById("ball5").style.top = y + "px";
+	document.getElementById("ball5").style.left = x + "px";
+	if(x > window.innerWidth - width){
+		xChange = -speed * Math.random();
+	}
+	if(y > window.innerHeight - height){
+		yChange = -speed * Math.random();
+	}
+	if(x < 0){
+		xChange = speed * Math.random();
+	}
+	if(y < 0){
+		yChange = speed * Math.random();
+	}
+}
+
+setInterval(gameLoop, 1000/60);
+
+</script>
 </html>
