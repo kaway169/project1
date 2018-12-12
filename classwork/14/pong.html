@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 	<title></title>
 <style>
+html{
+	overflow-y: hidden;
+}
 body{
 	margin: 0;
-	background-color: black;
+	background-color: rgb(64,135,250);
 }
 #ball{
 	width: 20px;
@@ -56,9 +59,10 @@ var y = 0;
 var velocityX = speed;
 var velocityY = speed;
 var paddleY = window.innerHeight / 2;
-var paddleSpeed = 30;
+var paddleSpeed = 10;
 var player2Points = 0;
 var player1Points = 0;
+var player2Moving = 0;
 
 setInterval(loop, 16);
 
@@ -67,8 +71,11 @@ function loop(){
 	y = y + velocityY;
 
 	if (x > window.innerWidth - ballRadius - 20){
-		winCondition(2);
-		velocityX = -speed;
+		if(winCondition(2)){
+			player1Points = player1Points + 1;
+			document.getElementById("player-1-points").innerHTML = player1Points;
+			x = window.innerWidth / 2;
+		}		velocityX = -speed;
 	}
 	if (y > window.innerHeight - ballRadius){
 		velocityY = -speed;
@@ -85,6 +92,11 @@ function loop(){
 		velocityY = speed;
 	}
 
+	paddleY = paddleY + player2Moving;
+
+	document.getElementById("player-2").style.top = paddleY + "px";
+	document.getElementById("player-2").style.left = window.innerWidth - 20 + "px";
+
 	document.getElementById("ball").style.top = y + "px";
 	document.getElementById("ball").style.left = x + "px";
 }
@@ -95,19 +107,20 @@ document.onmousemove = function(event){
 	document.getElementById("player-1").style.left = "20px";
 }
 
+document, onkeyup = function(event){
+	player2Moving = 0;
+}
+
 document.onkeydown = function(event){
 	console.log(event);
 	if(event.keyCode == 38){
 		// arrow up
-		paddleY = paddleY - paddleSpeed;
+		player2Moving =  -paddleSpeed;
 	}
 	if(event.keyCode == 40){
 		// arrow down
-		paddleY = paddleY + 5;
+		player2Moving = paddleSpeed;
 	}
-	document.getElementById("player-2").style.top = paddleY + "px";
-	document.getElementById("player-2").style.left = window.innerWidth - 20 + "px";
-
 }
 
 function winCondition(player){
@@ -122,7 +135,13 @@ function winCondition(player){
 
 	}
 	if(player == 2){
-		
+		var paddleString = document.getElementById("player-2").style.top;
+		var paddleInt = parseInt(paddleString);
+		if(Math.abs(paddleInt - y) < 50){
+			return false;
+		} else{
+			return true;
+		}	
 	}
 }
 
